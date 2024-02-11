@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import React, { Component } from "react";
+import React from "react";
+import styled, { css } from 'styled-components';
 
 class App extends React.Component {
   state = {
@@ -10,6 +10,7 @@ class App extends React.Component {
     where: String,
     error: null
   };
+
   getFetchQuotes() {
     this.setState({
       loading: true
@@ -28,6 +29,17 @@ class App extends React.Component {
     this.getFetchQuotes();
   }
 
+  Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: #BF4F74;
+`;
+
+  // Create a Wrapper component that'll render a <section> tag with some styles
+  Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
   render() {
     const {
       who,
@@ -39,20 +51,23 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-        <h1>Your Random Quote</h1>
-        {
-          error ? <p>
-            {
-              error.message
-            } </p> : null
-        } {
-          <div key={what}>
-            <p>Who: {who}</p>
-            <p>What: {what}</p>
-            <p>When: {when}</p>
-            <p>Where: {where}</p>
-          </div>
-        } </React.Fragment>);
+        <this.Wrapper>
+          <this.Title>Random Quote</this.Title>
+          {
+            error ? <p>
+              {
+                error.message
+              } </p> : null
+          } {
+            <div key={what}>
+              <p>Who: {who}</p>
+              <p>What: {what}</p>
+              <p>When: {when}</p>
+              <p>Where: {where}</p>
+            </div>
+          }
+        </this.Wrapper>
+      </React.Fragment>);
 
   }
 }

@@ -66,6 +66,7 @@ class App extends React.Component {
               <p>Where: {where}</p>
             </div>
           }
+          <button onClick={() => window.location.reload(false)}>Get a new quote</button>
         </this.Wrapper>
       </React.Fragment>);
 
